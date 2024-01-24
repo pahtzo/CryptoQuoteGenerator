@@ -7,4 +7,4 @@ An example cryptoquote: HELLO WORLD! becomes: BSZZQ UQLZN!
 This is a Visual Studio 2022 C# .NET project.
 There is a release executable in the bin/release directory.
 
-To re-build: clone the project or download and extract the sources then open the solution ComboLockHack.sln file in Visual Studio and build the project.
+To re-build: clone the project or download and extract the sources then open the CryptoQuoteGenerator.sln solution file in Visual Studio and build the project.
