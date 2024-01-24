@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace CryptoQuoteGenerator
 {
     partial class Form1
     {

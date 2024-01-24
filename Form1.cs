@@ -1,7 +1,7 @@
 ﻿/*
  * CryptoQuote Generator for creating cryptoquotes like those found in newspapers and word puzzle books.
  * Creates two HTML files, one with just the puzzle and reference alphabet to solve
- * and one with the puzzle, solution, and substitution alphabet.
+ * and one with the puzzle, solution, and subtitution alphabet.
  * 
  * Nick DeBaggis - 2014, 2024
  */
@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication1
+namespace CryptoQuoteGenerator
 {
     public partial class Form1 : Form
     {
