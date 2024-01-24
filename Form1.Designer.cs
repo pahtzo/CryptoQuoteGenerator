@@ -155,6 +155,7 @@
             this.Controls.Add(this.textBox_Alphabet);
             this.Name = "Form1";
             this.Text = "CryptoQuote Generator";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

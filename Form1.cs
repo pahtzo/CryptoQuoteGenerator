@@ -6,8 +6,10 @@
  * Nick DeBaggis - 2014, 2024
  */
 
+using CryptoQuoteGenerator.Properties;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Text;
 using System.Windows.Forms;
 
@@ -21,6 +23,8 @@ namespace CryptoQuoteGenerator
         string plain2 = "";
         string crypted2 = "";
         string shuffled = "";
+        string letterspacingpixels;
+        string lineheightpercent;
 
         public Form1()
         {
@@ -28,6 +32,8 @@ namespace CryptoQuoteGenerator
             textBox_Alphabet.Text = alphabet;
             textBox_Key.Text = alphabet;
             btn_savesolution.Enabled = false;
+            letterspacingpixels = Settings.Default.OutputLetterSpacingPixels;
+            lineheightpercent = Settings.Default.OutputLineHeightPercent;
         }
 
         /*
@@ -136,10 +142,10 @@ namespace CryptoQuoteGenerator
             "<head>" +
             "<style>" +
             "div.crypt {" +
-            "letter-spacing: 8px;" +
+            "letter-spacing: " + letterspacingpixels + "px;" +
             "font-family:courier, \"courier new\", monospace;" +
             "font-size:large;" +
-            "line-height: 350%;" +
+            "line-height: " + lineheightpercent + "%;" +
             "}" +
             "</style>" +
             "</head>" +
@@ -176,10 +182,10 @@ namespace CryptoQuoteGenerator
             "<head>" +
             "<style>" +
             "div.crypt {" +
-            "letter-spacing: 8px;" +
+            "letter-spacing: " + letterspacingpixels + "px;" +
             "font-family:courier, \"courier new\", monospace;" +
             "font-size:large;" +
-            "line-height: 350%;" +
+            "line-height: " + lineheightpercent + "%;" +
             "}" +
             "</style>" +
             "</head>" +
@@ -198,6 +204,11 @@ namespace CryptoQuoteGenerator
             );
 
             sw.Close();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
     }
 }
