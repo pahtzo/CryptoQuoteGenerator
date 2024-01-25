@@ -25,7 +25,7 @@ namespace CryptoQuoteGenerator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
         public string OutputLetterSpacingPixels {
             get {
                 return ((string)(this["OutputLetterSpacingPixels"]));
@@ -37,13 +37,25 @@ namespace CryptoQuoteGenerator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("350")]
+        [global::System.Configuration.DefaultSettingValueAttribute("300")]
         public string OutputLineHeightPercent {
             get {
                 return ((string)(this["OutputLineHeightPercent"]));
             }
             set {
                 this["OutputLineHeightPercent"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("medium")]
+        public string OutputLetterSize {
+            get {
+                return ((string)(this["OutputLetterSize"]));
+            }
+            set {
+                this["OutputLetterSize"] = value;
             }
         }
     }

@@ -25,6 +25,7 @@ namespace CryptoQuoteGenerator
         string shuffled = "";
         string letterspacingpixels;
         string lineheightpercent;
+        string lettersize;
 
         public Form1()
         {
@@ -34,6 +35,18 @@ namespace CryptoQuoteGenerator
             btn_savesolution.Enabled = false;
             letterspacingpixels = Settings.Default.OutputLetterSpacingPixels;
             lineheightpercent = Settings.Default.OutputLineHeightPercent;
+            lettersize = Settings.Default.OutputLetterSize;
+
+            comboBoxLineSpacing.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxLetterSize.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxTextSpacing.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            comboBoxTextSpacing.SelectedIndex = comboBoxTextSpacing.Items.IndexOf(letterspacingpixels);
+            comboBoxLetterSize.SelectedIndex = comboBoxLetterSize.Items.IndexOf(lettersize);
+            comboBoxLineSpacing.SelectedIndex = comboBoxLineSpacing.Items.IndexOf(lineheightpercent);
+#if DEBUG
+            this.Text += " - DEBUG Build";
+#endif
         }
 
         /*
@@ -77,7 +90,7 @@ namespace CryptoQuoteGenerator
             // Loop through to ensure the randomized alphabet key has no matching letters in the ordered alphabet.
             // i.e. A != A, B != B, ...
             // This is a bit slow but since we aren't processing batches of cryptoquotes it shouldn't be noticable.
-            // Based on code profiling, on average it takes just over 3 shuffles per scramble click
+            // Based on code profiling, on average, it takes just over 3 shuffles per scramble click
             // to obtain a key where each letter substitution is unique.
 
             while (checkkey(shuffled) == false)
@@ -124,8 +137,8 @@ namespace CryptoQuoteGenerator
             string puzzlefilename;
             DateTime dt = DateTime.Now;
 
-            solutionfilename = path + "\\" + dt.ToString("yyyyMMdd_HHmmss") + "-solution.html";
-            puzzlefilename = path + "\\" + dt.ToString("yyyyMMdd_HHmmss") + "-puzzle.html";
+            solutionfilename = path + "\\" + dt.ToString("yyyyMMdd_HHmmssff") + "-solution.html";
+            puzzlefilename = path + "\\" + dt.ToString("yyyyMMdd_HHmmssff") + "-puzzle.html";
 
             savesolution(solutionfilename);
             savepuzzle(puzzlefilename);
@@ -144,13 +157,20 @@ namespace CryptoQuoteGenerator
             "div.crypt {" +
             "letter-spacing: " + letterspacingpixels + "px;" +
             "font-family:courier, \"courier new\", monospace;" +
-            "font-size:large;" +
+            "font-size:" + lettersize + ";" +
             "line-height: " + lineheightpercent + "%;" +
             "}" +
             "</style>" +
             "</head>" +
             "<title>CryptoQuote Solution</title>" +
             "<body>" +
+#if DEBUG
+            "<u>DEBUG Build - Listing User Settings</u><br>" +
+            "Font Size : " + lettersize + "<br>" +
+            "Font Spacing : " + letterspacingpixels + "px<br>" +
+            "Line Spacing : " + lineheightpercent + "%<br>" +
+            "Filename : " + filename + "<br>" +
+#endif
             "<div class=\"crypt\">"
             );
 
@@ -184,13 +204,21 @@ namespace CryptoQuoteGenerator
             "div.crypt {" +
             "letter-spacing: " + letterspacingpixels + "px;" +
             "font-family:courier, \"courier new\", monospace;" +
-            "font-size:large;" +
+            "font-size:" + lettersize + ";" +
             "line-height: " + lineheightpercent + "%;" +
             "}" +
             "</style>" +
             "</head>" +
             "<title>CryptoQuote Puzzle</title>" +
             "<body>" +
+#if DEBUG
+            "<u>DEBUG Build - Listing User Settings</u><br>" +
+            "Font Size : " + lettersize + "<br>" +
+            "Font Spacing : " + letterspacingpixels + "px<br>" +
+            "Line Spacing : " + lineheightpercent + "%<br>" +
+            "Filename : " + filename + "<br>" +
+#endif
+
             "<div class=\"crypt\">"
             );
 
@@ -206,9 +234,39 @@ namespace CryptoQuoteGenerator
             sw.Close();
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void buttonSaveSettings_Click(object sender, EventArgs e)
         {
+            letterspacingpixels = Settings.Default.OutputLetterSpacingPixels = comboBoxTextSpacing.Items[comboBoxTextSpacing.SelectedIndex].ToString();
+            lineheightpercent = Settings.Default.OutputLineHeightPercent = comboBoxLineSpacing.Items[comboBoxLineSpacing.SelectedIndex].ToString();
+            lettersize = Settings.Default.OutputLetterSize = comboBoxLetterSize.Items[comboBoxLetterSize.SelectedIndex].ToString();
+            Settings.Default.Save();
+            Settings.Default.Reload();
+        }
 
+        private void buttonLoadDefaults_Click(object sender, EventArgs e)
+        {
+            letterspacingpixels = Settings.Default.OutputLetterSpacingPixels = "6";
+            lineheightpercent = Settings.Default.OutputLineHeightPercent = "300";
+            lettersize = Settings.Default.OutputLetterSize = "medium";
+            comboBoxTextSpacing.SelectedIndex = comboBoxTextSpacing.Items.IndexOf(letterspacingpixels);
+            comboBoxLetterSize.SelectedIndex = comboBoxLetterSize.Items.IndexOf(lettersize);
+            comboBoxLineSpacing.SelectedIndex = comboBoxLineSpacing.Items.IndexOf(lineheightpercent);
+            Settings.Default.Reload();
+        }
+
+        private void comboBoxLetterSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lettersize = comboBoxLetterSize.Items[comboBoxLetterSize.SelectedIndex].ToString();
+        }
+
+        private void comboBoxTextSpacing_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            letterspacingpixels = comboBoxTextSpacing.Items[comboBoxTextSpacing.SelectedIndex].ToString();
+        }
+
+        private void comboBoxLineSpacing_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lineheightpercent = comboBoxLineSpacing.Items[comboBoxLineSpacing.SelectedIndex].ToString();
         }
     }
 }

@@ -38,6 +38,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_savesolution = new System.Windows.Forms.Button();
+            this.comboBoxLetterSize = new System.Windows.Forms.ComboBox();
+            this.comboBoxTextSpacing = new System.Windows.Forms.ComboBox();
+            this.comboBoxLineSpacing = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.buttonSaveSettings = new System.Windows.Forms.Button();
+            this.buttonLoadDefaults = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox_Alphabet
@@ -138,11 +146,114 @@
             this.btn_savesolution.UseVisualStyleBackColor = true;
             this.btn_savesolution.Click += new System.EventHandler(this.btn_savesolution_Click);
             // 
+            // comboBoxLetterSize
+            // 
+            this.comboBoxLetterSize.FormattingEnabled = true;
+            this.comboBoxLetterSize.Items.AddRange(new object[] {
+            "small",
+            "medium",
+            "large",
+            "x-large"});
+            this.comboBoxLetterSize.Location = new System.Drawing.Point(16, 622);
+            this.comboBoxLetterSize.Name = "comboBoxLetterSize";
+            this.comboBoxLetterSize.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxLetterSize.TabIndex = 9;
+            this.comboBoxLetterSize.SelectedIndexChanged += new System.EventHandler(this.comboBoxLetterSize_SelectedIndexChanged);
+            // 
+            // comboBoxTextSpacing
+            // 
+            this.comboBoxTextSpacing.FormattingEnabled = true;
+            this.comboBoxTextSpacing.Items.AddRange(new object[] {
+            "2",
+            "4",
+            "6",
+            "8",
+            "10",
+            "12",
+            "14"});
+            this.comboBoxTextSpacing.Location = new System.Drawing.Point(155, 622);
+            this.comboBoxTextSpacing.Name = "comboBoxTextSpacing";
+            this.comboBoxTextSpacing.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxTextSpacing.TabIndex = 10;
+            this.comboBoxTextSpacing.SelectedIndexChanged += new System.EventHandler(this.comboBoxTextSpacing_SelectedIndexChanged);
+            // 
+            // comboBoxLineSpacing
+            // 
+            this.comboBoxLineSpacing.FormattingEnabled = true;
+            this.comboBoxLineSpacing.Items.AddRange(new object[] {
+            "200",
+            "250",
+            "300",
+            "350",
+            "400",
+            "450",
+            "500"});
+            this.comboBoxLineSpacing.Location = new System.Drawing.Point(298, 622);
+            this.comboBoxLineSpacing.Name = "comboBoxLineSpacing";
+            this.comboBoxLineSpacing.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxLineSpacing.TabIndex = 11;
+            this.comboBoxLineSpacing.SelectedIndexChanged += new System.EventHandler(this.comboBoxLineSpacing_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(16, 603);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(86, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Output Text Size";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(155, 603);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(105, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Output Text Spacing";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(298, 603);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(104, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Output Line Spacing";
+            // 
+            // buttonSaveSettings
+            // 
+            this.buttonSaveSettings.Location = new System.Drawing.Point(443, 620);
+            this.buttonSaveSettings.Name = "buttonSaveSettings";
+            this.buttonSaveSettings.Size = new System.Drawing.Size(136, 23);
+            this.buttonSaveSettings.TabIndex = 15;
+            this.buttonSaveSettings.Text = "Save Current Settings";
+            this.buttonSaveSettings.UseVisualStyleBackColor = true;
+            this.buttonSaveSettings.Click += new System.EventHandler(this.buttonSaveSettings_Click);
+            // 
+            // buttonLoadDefaults
+            // 
+            this.buttonLoadDefaults.Location = new System.Drawing.Point(592, 620);
+            this.buttonLoadDefaults.Name = "buttonLoadDefaults";
+            this.buttonLoadDefaults.Size = new System.Drawing.Size(136, 23);
+            this.buttonLoadDefaults.TabIndex = 16;
+            this.buttonLoadDefaults.Text = "Load Default Settings";
+            this.buttonLoadDefaults.UseVisualStyleBackColor = true;
+            this.buttonLoadDefaults.Click += new System.EventHandler(this.buttonLoadDefaults_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(744, 600);
+            this.ClientSize = new System.Drawing.Size(744, 660);
+            this.Controls.Add(this.buttonLoadDefaults);
+            this.Controls.Add(this.buttonSaveSettings);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.comboBoxLineSpacing);
+            this.Controls.Add(this.comboBoxTextSpacing);
+            this.Controls.Add(this.comboBoxLetterSize);
             this.Controls.Add(this.btn_savesolution);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -155,7 +266,6 @@
             this.Controls.Add(this.textBox_Alphabet);
             this.Name = "Form1";
             this.Text = "CryptoQuote Generator";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,6 +283,14 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btn_savesolution;
+        private System.Windows.Forms.ComboBox comboBoxLetterSize;
+        private System.Windows.Forms.ComboBox comboBoxTextSpacing;
+        private System.Windows.Forms.ComboBox comboBoxLineSpacing;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button buttonSaveSettings;
+        private System.Windows.Forms.Button buttonLoadDefaults;
     }
 }
 

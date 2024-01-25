@@ -3,10 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="OutputLetterSpacingPixels" Type="System.String" Scope="User">
-      <Value Profile="(Default)">8</Value>
+      <Value Profile="(Default)">6</Value>
     </Setting>
     <Setting Name="OutputLineHeightPercent" Type="System.String" Scope="User">
-      <Value Profile="(Default)">350</Value>
+      <Value Profile="(Default)">300</Value>
+    </Setting>
+    <Setting Name="OutputLetterSize" Type="System.String" Scope="User">
+      <Value Profile="(Default)">medium</Value>
     </Setting>
   </Settings>
 </SettingsFile>
