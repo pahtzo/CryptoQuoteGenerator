@@ -1,9 +1,9 @@
 ﻿/*
- * CryptoQuote Generator for creating cryptoquotes like those found in newspapers and word puzzle books.
+ * CryptoQuote Generator for creating crypto-quotes like those found in newspapers and word puzzle books.
  * Creates two HTML files, one with just the puzzle and reference alphabet to solve
- * and one with the puzzle, solution, and subtitution alphabet.
+ * and one with the puzzle, solution, and substitution alphabet.
  * 
- * Nick DeBaggis - 2014, 2024
+ * Nick DeBaggis - 2014, 2026
  */
 
 using CryptoQuoteGenerator.Properties;
@@ -89,7 +89,7 @@ namespace CryptoQuoteGenerator
 
             // Loop through to ensure the randomized alphabet key has no matching letters in the ordered alphabet.
             // i.e. A != A, B != B, ...
-            // This is a bit slow but since we aren't processing batches of cryptoquotes it shouldn't be noticable.
+            // This is a bit slow but since we aren't processing batches of cryptoquotes it shouldn't be noticeable.
             // Based on code profiling, on average, it takes just over 3 shuffles per scramble click
             // to obtain a key where each letter substitution is unique.
 
