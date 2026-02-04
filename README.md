@@ -5,6 +5,6 @@ Creates two HTML files, one with just the puzzle and reference alphabet to solve
 An example cryptoquote: HELLO WORLD! becomes: BSZZQ UQLZN!
 
 This is a Visual Studio 2022 C# .NET project.
-There is a release executable in the bin/release directory.
+There is a release zip file package under the Releases page.
 
 To re-build: clone the project or download and extract the sources then open the CryptoQuoteGenerator.sln solution file in Visual Studio and build the project.
